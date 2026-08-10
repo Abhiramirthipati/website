@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abhiram Mirthipati is a backend engineer building scalable APIs, streaming platforms, and AI-powered products.">
+    <title>Abhiram Mirthipati | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/22e5f02375.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#header" class="brand"></a>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+
+            <div class="header-text">
+                <p>Backend Engineer • AI Systems • Data Platforms</p>
+                <h1>Hi, I’m <span>Abhiram Mirthipati</span><br>and I enjoy building thoughtful software.</h1>
+                <!-- <p class="hero-subtitle">I build production-grade Applications, real-time data pipelines, and LLM-enabled experiences for modern digital products.</p> -->
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">Explore Projects</a>
+                    <a href="Resume_AbhiramMirthipati.pdf" class="btn btn-secondary" download>Download Resume</a>
+                </div>
+                <div class="hero-highlights">
+                    <div>
+                        <strong>SDE</strong>
+                        <span>with 2 years of experience</span>
+                    </div>
+                    <div>
+                        <strong>NIT Nagpur</strong>
+                        <span>Alumnus • 8.72 CGPA</span>
+                    </div>
+                    <div>
+                        <strong>Finance + News</strong>
+                        <span>real-time application experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="images/1776971733283.png" alt="Abhiram Mirthipati">
+                    </div>
+                    <div class="about-col-2">
+                        <p class="eyebrow">About Me</p>
+                        <h2 class="sub-title">A backend-focused engineer with hands-on experience in AI integrations, APIs, and data-heavy systems.</h2>
+                        <p>I’m currently a Software Engineer at Decimal Point Analytics, where I build high-performance Python services, real-time streaming pipelines, and LLM-based automation workflows. My work sits at the intersection of backend engineering, distributed systems, and applied AI.</p>
+                        <p>I enjoy turning messy requirements into dependable systems that are secure, measurable, and easy to operate in production.</p>
+
+                        <div class="tab-titles">
+                            <button class="tab-links active-link" onclick="opentab(event, 'education')">Education</button>
+                            <button class="tab-links" onclick="opentab(event, 'skills')">Skills</button>
+                        </div>
+
+                        <div class="tab-contents active-tab" id="education">
+                            <ul>
+                                <li><span>B.Tech in Mechanical Engineering (2020 - 2024)</span><br>Visvesvaraya National Institute of Technology, Nagpur</li>
+                                <li><span>CGPA</span><br>8.72 / 10</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="skills">
+                            <ul>
+                                <li><span>Backend & APIs</span><br>Python, FastAPI, WebSockets, REST APIs, performance tuning</li>
+                                <li><span>Data & Streaming</span><br>Kafka, Redis Streams, MongoDB, Oracle DB, MySQL, vector search</li>
+                                <li><span>AI Systems</span><br>RAG, LLM integration, prompt engineering, agentic AI workflows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <p class="eyebrow">Experience</p>
+                <h2 class="sub-title">What I’ve built so far</h2>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Software Engineer (Backend Developer)</h3>
+                            <p>Decimal Point Analytics • Oct 2024 – Present</p>
+                        </div>
+                        <span class="pill">India</span>
+                    </div>
+                    <ul>
+                        <li>Built and scaled Python backend systems handling 35,000+ news articles per day in production.</li>
+                        <li>Developed high-performance FastAPI REST and WebSocket APIs, reducing latency by 50%.</li>
+                        <li>Designed Kafka and Redis-based streaming pipelines for low-latency content delivery.</li>
+                        <li>Integrated LLM workflows through OpenAI APIs for automated text processing and enrichment.</li>
+                        <li>Created an MCP chatbot server that interprets and validates queries before retrieving the right data.</li>
+                        <li>Architected a distributed filings conversion platform for XBRL/iXBRL, HTML, PDF, DOCX, and XLSX processing with real-time delivery.</li>
+                    </ul>
+                </div>
+                <div class="cert-list">
+                    <div class="cert-card">
+                        <h3>Certifications</h3>
+                        <p>Oracle AI Vector Search Certified Professional</p>
+                        <p>Databricks Generative AI Fundamentals</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <p class="eyebrow">Services</p>
+                <h2 class="sub-title">Core strengths I bring to product teams</h2>
+                <div class="services-list">
+                    <div>
+                        <i class="fa-solid fa-server"></i>
+                        <h3>Backend Engineering</h3>
+                        <p>Scalable Python services, API design, and deployment-ready systems for fast-moving teams.</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-bolt"></i>
+                        <h3>Real-Time Data</h3>
+                        <p>Streaming pipelines, low-latency distribution, and event-driven architecture using Kafka and Redis.</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-brain"></i>
+                        <h3>AI Product Integration</h3>
+                        <p>RAG workflows, LLM-powered automation, prompt engineering, and agent-based applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <p class="eyebrow">Things I Built</p>
+                <h2 class="sub-title">Work that reflects my product and engineering focus</h2>
+                <div class="work-list">
+                    <article class="work-card plain-card">
+                        <div class="card-content">
+                            <h3>Hybrid RAG Claims Assistant</h3>
+                            <p>Built a multi-agent system with Google ADK and LiteLLM to draft insurance claim correspondence with guardrails against hallucinations and leakage.</p>
+                        </div>
+                    </article>
+                    <article class="work-card plain-card">
+                        <div class="card-content">
+                            <h3>PDF Query Application</h3>
+                            <p>Built a retrieval-augmented generation experience to let users ask natural-language questions over documents and retrieve grounded answers.</p>
+                        </div>
+                    </article>
+                    <article class="work-card plain-card">
+                        <div class="card-content">
+                            <h3>High-Volume Content Platform</h3>
+                            <p>Delivered backend systems for large-scale news and filings workflow processing with strong performance and observability.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="row contact-row">
+                    <div class="contact-left">
+                        <p class="eyebrow">Contact</p>
+                        <h2 class="sub-title">Let’s build something useful together.</h2>
+                        <p><i class="fa-solid fa-paper-plane"></i>mirthipatiabhiram@gmail.com</p>
+                        <p><i class="fa-solid fa-phone"></i>+91 9440971346</p>
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/abhiram-mirthipati-403705203" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://github.com/Abhiramirthipati" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.instagram.com/abhiramm_27/" target="_blank" rel="noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                        <a href="Resume_AbhiramMirthipati.pdf" download class="btn btn-primary">Download Resume</a>
+                    </div>
+                    <div class="contact-right">
+                        <form id="contactForm">
+                            <input type="text" name="Name" placeholder="Your Name" required>
+                            <input type="email" name="Email" placeholder="Your Email" required>
+                            <textarea name="Message" rows="6" placeholder="Tell me what's on your mind..."></textarea>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <p id="formStatus" class="form-status">I usually capture the details you send here in a simple structured note so I can understand your goal, workflow, and constraints before replying.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="copyright">
+        <div class="container">
+            <p>© <span id="year"></span> Abhiram Mirthipati. Built with ❤️ and curiosity.</p>
+        </div>
+    </footer>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(event, tabname) {
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active-link");
+            }
+            for (var j = 0; j < tabcontents.length; j++) {
+                tabcontents[j].classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+        function closemenu() {
+            sidemenu.style.right = "-220px";
+        }
+
+        document.querySelectorAll('#sidemenu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                closemenu();
+            });
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('formStatus').textContent = 'Thanks for reaching out. I will reply by email soon.';
+            this.reset();
+        });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
