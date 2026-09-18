@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A technical blog post by Abhiram Mirthipati.">
+    <title>Blog | Abhiram Mirthipati</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="blog-page">
+    <div class="container">
+        <nav>
+            <a href="../index.html#header" class="brand">AM</a>
+            <ul>
+                <li><a href="index.html">All blogs</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main id="postRoot">
+            <p class="form-status">Loading post...</p>
+        </main>
+
+        <footer class="copyright">
+            <p>© <span id="year"></span> Abhiram Mirthipati.</p>
+        </footer>
+    </div>
+
+    <script>
+        var postRoot = document.getElementById('postRoot');
+        var slug = new URLSearchParams(window.location.search).get('slug');
+
+        function escapeHtml(value) {
+            return value.replace(/[&<>'"]/g, function(character) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[character];
+            });
+        }
+
+        function formatInline(value) {
+            return escapeHtml(value).replace(/`([^`]+)`/g, '<code>$1</code>');
+        }
+
+        function renderContent(content) {
+            return content.trim().split(/\n\s*\n/).map(function(block) {
+                var text = block.trim();
+                if (text.indexOf('## ') === 0) {
+                    return '<h2>' + formatInline(text.slice(3)) + '</h2>';
+                }
+                if (text.indexOf('> ') === 0) {
+                    return '<div class="blog-callout">' + formatInline(text.slice(2)) + '</div>';
+                }
+                return '<p>' + formatInline(text).replace(/\n/g, '<br>') + '</p>';
+            }).join('');
+        }
+
+        function renderPost(post, content) {
+            document.title = post.title + ' | Abhiram Mirthipati';
+            postRoot.innerHTML =
+                '<header class="post-hero">' +
+                    '<p class="eyebrow">' + post.topics.join(' · ') + '</p>' +
+                    '<h1>' + escapeHtml(post.title) + '</h1>' +
+                    '<div class="blog-meta"><span>Technical note</span><span>Backend engineering</span></div>' +
+                '</header>' +
+                '<article class="post-content">' +
+                    renderContent(content) +
+                    '<div class="post-actions">' +
+                        '<a class="btn btn-primary" href="' + post.linkedin + '" target="_blank" rel="noreferrer">Read on LinkedIn</a>' +
+                        '<a class="btn btn-secondary" href="index.html">Back to blogs</a>' +
+                    '</div>' +
+                '</article>';
+        }
+
+        fetch('posts.json')
+            .then(function(response) { return response.json(); })
+            .then(function(posts) {
+                var post = posts.find(function(item) { return item.slug === slug; });
+                if (!post) {
+                    throw new Error('Post not found');
+                }
+                return fetch(post.source).then(function(response) {
+                    return response.text().then(function(content) {
+                        renderPost(post, content);
+                    });
+                });
+            })
+            .catch(function() {
+                postRoot.innerHTML = '<header class="post-hero"><p class="eyebrow">Not found</p><h1>This post is unavailable.</h1><a class="btn btn-secondary" href="index.html">Back to blogs</a></header>';
+            });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

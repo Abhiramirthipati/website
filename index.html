@@ -19,6 +19,7 @@
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="blogs/">Blogs</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
                 </ul>
@@ -43,8 +44,8 @@
                         <span>Alumnus • 8.72 CGPA</span>
                     </div>
                     <div>
-                        <strong>Finance + News</strong>
-                        <span>real-time application experience</span>
+                        <strong>Real-time Applications</strong>
+                        <span>experience in building scalable systems</span>
                     </div>
                 </div>
             </div>
@@ -185,12 +186,12 @@
                         <a href="Resume_AbhiramMirthipati.pdf" download class="btn btn-primary">Download Resume</a>
                     </div>
                     <div class="contact-right">
-                        <form id="contactForm">
-                            <input type="text" name="Name" placeholder="Your Name" required>
-                            <input type="email" name="Email" placeholder="Your Email" required>
-                            <textarea name="Message" rows="6" placeholder="Tell me what's on your mind..."></textarea>
+                        <form id="contactForm" action="https://docs.google.com/forms/d/e/1Nyx3C03b4l0MmgvD4ZLcKrmiwk8kB9_ekRSrwY8T2mE/formResponse" method="POST">
+                            <input type="text" name="entry.0.single" placeholder="Your Name" required>
+                            <input type="email" name="entry.1.single" placeholder="Your Email" required>
+                            <textarea name="entry.2.single" rows="6" placeholder="Tell me what's on your mind..."></textarea>
                             <button type="submit" class="btn btn-primary">Send Message</button>
-                            <p id="formStatus" class="form-status">I usually capture the details you send here in a simple structured note so I can understand your goal, workflow, and constraints before replying.</p>
+                            <p id="formStatus" class="form-status">Your message will be sent to the connected Google Form when you submit it.</p>
                         </form>
                     </div>
                 </div>
@@ -235,8 +236,33 @@
 
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            document.getElementById('formStatus').textContent = 'Thanks for reaching out. I will reply by email soon.';
-            this.reset();
+            var messageField = this.querySelector('textarea[name="entry.2.single"]');
+            var message = messageField.value.trim();
+            var status = document.getElementById('formStatus');
+            var formAction = this.getAttribute('action') || '';
+
+            if (!message || message.length < 5) {
+                status.textContent = 'please add something meaningful';
+                return;
+            }
+
+            if (!formAction) {
+                status.textContent = 'Please connect this form to your Google Form endpoint in the page code.';
+                return;
+            }
+
+            var formData = new FormData(this);
+            fetch(formAction, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(function() {
+                status.textContent = 'Thanks for reaching out. I will reply by email soon.';
+                this.reset();
+            }.bind(this)).catch(function() {
+                status.textContent = 'Thanks for reaching out. I will reply by email soon.';
+                this.reset();
+            }.bind(this));
         });
 
         document.getElementById('year').textContent = new Date().getFullYear();

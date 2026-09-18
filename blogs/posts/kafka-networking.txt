@@ -1,0 +1,29 @@
+Chugging cups and cups of coffee ☕, staring at the screen for hours 👨🏻‍💻, debugging like a maniac 👹... and then suddenly - "Ahh! That's it?" 🙈
+
+Here's a short tale about Apache Kafka that had me living that exact moment recently.
+
+We all know Kafka helps us stream messages and maintain crucial data flow between different scripts, servers, and large ecosystems.
+
+To introduce Kafka to those unfamiliar: it's the system that is helping you to see your delivery partner on Swiggy or the auto-wala bhayya on Uber Maps every day. Simply put: it's a live data streaming microservice.
+
+In the software industry, since scalability is crucial, we often deploy services across multiple servers to reduce load, ensure redundancy, or manage backups.
+
+## Why could one server not send a Kafka message to another?
+
+Imagine this setup: Server A is running a Kafka producer, and Server B is hosting the Kafka broker and consumer. Everything seems correctly wired, but the producer on Server A just cannot send the message across, even though the IPs and ports were correctly whitelisted.
+
+After digging deep, I found the issue was not with firewalls or blocked ports.
+
+> The culprit: Kafka on Server B was advertising its internal address as `localhost`.
+
+When the producer on Server A tried to fetch metadata, the broker responded with `localhost:<port>`. The producer then blindly attempted to connect to its own localhost, completely bypassing Server B.
+
+## The fix
+
+Configure the Kafka broker on Server B with a proper `advertised.listeners` value that points to its public or server IP. This ensures the producer on Server A receives the correct endpoint instead of a localhost address.
+
+## Key takeaway
+
+Whenever you work with Kafka across servers or containers, always configure `advertised.listeners` correctly. It can save you from invisible network traps like this one.
+
+Save this post. You might hit this exact issue in your development journey. Instead of flipping between ChatGPT and Stack Overflow next time, come back here and fix it in seconds.

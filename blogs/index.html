@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical notes and lessons from Abhiram Mirthipati's work in backend engineering, data platforms, and AI systems.">
+    <title>Blogs | Abhiram Mirthipati</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="blog-page">
+    <div class="container">
+        <nav>
+            <a href="../index.html#header" class="brand">AM</a>
+            <ul>
+                <li><a href="../index.html#header">Portfolio</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <header class="blog-hero">
+                <p class="eyebrow">Writing desk</p>
+                <h1>Notes from building backend systems.</h1>
+                <p>Short, practical stories about the systems, bugs, and lessons that stay with me after the code ships.</p>
+            </header>
+
+            <section id="blogList" class="blog-list" aria-label="Blog posts"></section>
+        </main>
+
+        <footer class="copyright">
+            <p>© <span id="year"></span> Abhiram Mirthipati.</p>
+        </footer>
+    </div>
+
+    <script>
+        var blogList = document.getElementById('blogList');
+
+        function renderPosts(posts) {
+            blogList.innerHTML = posts.map(function(post) {
+                return '<a class="blog-card" href="post.html?slug=' + encodeURIComponent(post.slug) + '">' +
+                    '<h2>' + post.title + '</h2>' +
+                    '<div class="blog-meta">' +
+                        '<div class="blog-topics">' + post.topics.map(function(topic) {
+                            return '<span class="blog-topic">' + topic + '</span>';
+                        }).join('<span class="blog-topic-separator">•</span>') + '</div>' +
+                        '<p class="blog-date">' + post.date + '</p>' +
+                    '</div>' +
+                    '</a>';
+            }).join('');
+        }
+
+        fetch('posts.json')
+            .then(function(response) { return response.json(); })
+            .then(renderPosts)
+            .catch(function() {
+                blogList.innerHTML = '<p class="form-status">Blog posts are temporarily unavailable.</p>';
+            });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+[
+  {
+    "slug": "jwt-authentication",
+    "title": "Understanding Json Web Tokens: The Water Park Analogy",
+    "topics": ["JWT", "AUTHENTICATION"],
+    "source": "posts/jwt-authentication.txt",
+    "linkedin": "https://www.linkedin.com/in/abhiram-mirthipati-403705203",
+    "date": "September 2026"
+  },
+  {
+    "slug": "kafka-networking",
+    "title": "A developer's life in a nutshell - How I solved a backend networking issue in Kafka streams",
+    "topics": ["APACHE KAFKA", "NETWORKING"],
+    "source": "posts/kafka-networking.txt",
+    "linkedin": "https://www.linkedin.com/posts/abhiram-mirthipati-403705203_apachekafka-kafka-networking-activity-7331867191564226560-UpKr?utm_source=share&utm_medium=member_desktop&rcm=ACoAADPlaAMBkU9SK9v8QJZTpzb1u0_YiaX9528",
+    "reference": "https://lnkd.in/dhcShSqr",
+    "date": "August 2025"
+  }
+]
