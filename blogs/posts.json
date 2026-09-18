@@ -1,7 +1,7 @@
 [
   {
     "slug": "jwt-authentication",
-    "title": "Understanding Json Web Tokens: The Water Park Analogy",
+    "title": "Understanding JSON Web Tokens: The Water Park Analogy",
     "topics": ["JWT", "AUTHENTICATION"],
     "source": "posts/jwt-authentication.txt",
     "linkedin": "https://www.linkedin.com/in/abhiram-mirthipati-403705203",
